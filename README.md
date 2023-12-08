@@ -9,14 +9,15 @@ A more advanced example can be seen live [here](https://share.streamlit.io/vivie
 ## Installation
 
 ```bash
-pip install st-cytoscape
+# pip install st-cytoscape
+pip install git+https://github.com/Bergam0t/st-cytoscape-extra#egg=st-cytoscape-extra
 ```
 
 ## Quickstart
 
 ```python
 import streamlit as st
-from st_cytoscape import cytoscape
+from st_cytoscape_extra import cytoscape
 
 elements = [
     {"data": {"id": "X"}, "selected": True, "selectable": False},
