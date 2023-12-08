@@ -2,6 +2,7 @@ import setuptools
 
 setuptools.setup(
     name="st-cytoscape-extra",
+    packages = ["st-cytoscape-extra"],
     version="0.0.5",
     author="",
     author_email="",
