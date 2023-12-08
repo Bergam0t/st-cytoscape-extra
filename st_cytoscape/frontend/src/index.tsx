@@ -8,9 +8,12 @@ import cytoscape from 'cytoscape';
 import fcose from 'cytoscape-fcose';
 // @ts-ignore
 import klay from 'cytoscape-klay';
+// @ts-ignore
+import avsdf from 'cytoscape-avsdf';
 
 cytoscape.use(fcose);
 cytoscape.use(klay);
+cytoscape.use(avsdf);
 
 const div = document.body.appendChild(document.createElement("div"));
 let args = '';
