@@ -95,3 +95,9 @@ You can now similarly use the `klay` layout, using the `cytoscape-klay` add-on f
 ```Python
 layout = {"name": "klay"}
 ```
+
+You can now also use the `avsdf` layout, using the `cytoscape-avsdf` add-on for Cytoscape.js - [extension](https://github.com/iVis-at-Bilkent/cytoscape.js-avsdf).  To use it simply name it in the layout:
+
+```Python
+layout = {"name": "avsdf"}
+```
