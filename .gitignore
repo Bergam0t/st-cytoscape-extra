@@ -1,8 +1,8 @@
-st_cytoscape/frontend/node_modules/
-st_cytoscape/frontend/build/
+st_cytoscape_extra/frontend/node_modules/
+st_cytoscape_extra/frontend/build/
 build/
 dist/
-st_cytoscape.egg-info/
+st_cytoscape_extra.egg-info/
 .vscode/
 *.txt
 *.pyc
