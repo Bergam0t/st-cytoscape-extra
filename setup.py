@@ -10,7 +10,7 @@ setuptools.setup(
     long_description="A Streamlit component to display a Cytoscape.js graph with the selected nodes and edges in return",
     long_description_content_type="text/plain",
     url="",
-    packages=["st-cytoscape-extra"],
+    packages=setuptools.find_packages(),
     include_package_data=True,
     classifiers=[],
     python_requires=">=3.6",
