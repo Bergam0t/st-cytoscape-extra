@@ -25,6 +25,7 @@ def cytoscape(
     min_zoom=1e-50,
     max_zoom=1e50,
     key=None,
+    show_birdseye=False
 ):
     """Creates a new instance of a Cytoscape.js graph.
 
