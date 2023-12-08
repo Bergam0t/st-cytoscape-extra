@@ -18,9 +18,10 @@ import dagre from 'cytoscape-dagre';
 import cola from 'cytoscape-cola';
 // @ts-ignore
 import cise from 'cytoscape-cise';
- 
-
-
+// // @ts-ignore
+// import euler from 'cytoscape-euler';
+// @ts-ignore
+import spread from 'cytoscape-spread';
 
 cytoscape.use(fcose);
 cytoscape.use(klay);
@@ -29,7 +30,8 @@ cytoscape.use(elk);
 cytoscape.use(dagre);
 cytoscape.use(cola);
 cytoscape.use(cise);
-
+// cytoscape.use(euler);
+cytoscape.use(spread);
 
 const div = document.body.appendChild(document.createElement("div"));
 let args = '';
