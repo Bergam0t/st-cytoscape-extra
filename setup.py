@@ -3,7 +3,7 @@ import setuptools
 setuptools.setup(
     name="st-cytoscape-extra",
     # packages = ,
-    version="0.0.5",
+    version="0.0.6",
     author="",
     author_email="",
     description="A Streamlit component to display a Cytoscape.js graph",

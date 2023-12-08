@@ -10,10 +10,26 @@ import fcose from 'cytoscape-fcose';
 import klay from 'cytoscape-klay';
 // @ts-ignore
 import avsdf from 'cytoscape-avsdf';
+// @ts-ignore
+import elk from 'cytoscape-elk';
+// @ts-ignore
+import dagre from 'cytoscape-dagre';
+// @ts-ignore
+import cola from 'cytoscape-cola';
+// @ts-ignore
+import cise from 'cytoscape-cise';
+ 
+
+
 
 cytoscape.use(fcose);
 cytoscape.use(klay);
 cytoscape.use(avsdf);
+cytoscape.use(elk);
+cytoscape.use(dagre);
+cytoscape.use(cola);
+cytoscape.use(cise);
+
 
 const div = document.body.appendChild(document.createElement("div"));
 let args = '';
