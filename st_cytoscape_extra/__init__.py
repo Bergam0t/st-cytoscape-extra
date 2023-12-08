@@ -86,6 +86,7 @@ def cytoscape(
         maxZoom=max_zoom,
         key=key,
         default=default,
+        showBirdseye=show_birdseye
     )
     return component_value
 
