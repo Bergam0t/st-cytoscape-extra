@@ -24,8 +24,13 @@ import cise from 'cytoscape-cise';
 import spread from 'cytoscape-spread';
 // @ts-ignore
 import 'cytoscape-navigator/cytoscape.js-navigator.css'
+import 'cytoscape-panzoom/cytoscape.js-panzoom.css'
 
 var navigator = require('cytoscape-navigator');
+
+var panzoom = require('cytoscape-panzoom');
+
+
 
 var defaults = {
   container: false // string | false | undefined. Supported strings: an element id selector (like "#someId"), or a className selector (like ".someClassName"). Otherwise an element will be created by the library.
@@ -37,7 +42,35 @@ var defaults = {
 , rerenderDelay: 100 // ms to throttle rerender updates to the panzoom for performance
 };
 
+var defaultsPanZoom = {
+  zoomFactor: 0.05, // zoom factor per zoom tick
+  zoomDelay: 45, // how many ms between zoom ticks
+  minZoom: 0.1, // min zoom level
+  maxZoom: 10, // max zoom level
+  fitPadding: 50, // padding when fitting
+  panSpeed: 10, // how many ms in between pan ticks
+  panDistance: 10, // max pan distance per tick
+  panDragAreaSize: 75, // the length of the pan drag box in which the vector for panning is calculated (bigger = finer control of pan speed and direction)
+  panMinPercentSpeed: 0.25, // the slowest speed we can pan by (as a percent of panSpeed)
+  panInactiveArea: 8, // radius of inactive area in pan drag box
+  panIndicatorMinOpacity: 0.5, // min opacity of pan indicator (the draggable nib); scales from this to 1.0
+  zoomOnly: false, // a minimal version of the ui only with zooming (useful on systems with bad mousewheel resolution)
+  fitSelector: undefined, // selector of elements to fit
+  animateOnFit: function(){ // whether to animate on fit
+    return false;
+  },
+  fitAnimationDuration: 1000, // duration of animation on fit
+
+  // icon class names
+  sliderHandleIcon: 'fa fa-minus',
+  zoomInIcon: 'fa fa-plus',
+  zoomOutIcon: 'fa fa-minus',
+  resetIcon: 'fa fa-expand'
+};
+
+
 navigator( cytoscape ); // register extension
+panzoom( cytoscape ); // register extension
 
 cytoscape.use(fcose);
 cytoscape.use(klay);
@@ -48,6 +81,7 @@ cytoscape.use(cola);
 cytoscape.use(cise);
 // cytoscape.use(euler);
 cytoscape.use(spread);
+
 
 
 const div = document.body.appendChild(document.createElement("div"));
@@ -120,6 +154,9 @@ function onRender(event: Event): void {
     if (data.args["showBirdseye"] ){
       var nav = cy.navigator( defaults );
     }
+
+    // add the panzoom control
+   cy.panzoom( defaultsPanZoom );
     updateComponent(cy);
   }
 
