@@ -23,14 +23,17 @@ import cise from 'cytoscape-cise';
 // @ts-ignore
 import spread from 'cytoscape-spread';
 // @ts-ignore
+import popper from 'cytoscape-popper';
+import tippy from "tippy.js";
+import {hideAll} from 'tippy.js';
+
+
 import 'cytoscape-navigator/cytoscape.js-navigator.css'
 import 'cytoscape-panzoom/cytoscape.js-panzoom.css'
+import "tippy.js/dist/tippy.css";
 
 var navigator = require('cytoscape-navigator');
-
 var panzoom = require('cytoscape-panzoom');
-
-
 
 var defaults = {
   container: false // string | false | undefined. Supported strings: an element id selector (like "#someId"), or a className selector (like ".someClassName"). Otherwise an element will be created by the library.
@@ -68,10 +71,11 @@ var defaultsPanZoom = {
   resetIcon: 'fa fa-expand'
 };
 
+// Register navigation extensions
+navigator(cytoscape); // register extension
+panzoom(cytoscape); // register extension
 
-navigator( cytoscape ); // register extension
-panzoom( cytoscape ); // register extension
-
+// Register layout extensions
 cytoscape.use(fcose);
 cytoscape.use(klay);
 cytoscape.use(avsdf);
@@ -82,7 +86,8 @@ cytoscape.use(cise);
 // cytoscape.use(euler);
 cytoscape.use(spread);
 
-
+// Register tooltip extensions
+cytoscape.use( popper );
 
 const div = document.body.appendChild(document.createElement("div"));
 let args = '';
@@ -92,6 +97,33 @@ function updateComponent(cy: any) {
     'nodes': cy.$('node:selected').map((x: any) => x['_private']['data']['id']),
     'edges': cy.$('edge:selected').map((x: any) => x['_private']['data']['id'])
   })
+}
+
+function makeHoverNodeTippy(node:any) {
+  // let node = cy.nodes();
+  let ref = node.popperRef(); // used only for positioning
+
+  // A dummy element must be passed as tippy only accepts dom element(s) as the target
+  // https://atomiks.github.io/tippyjs/v6/constructor/#target-types
+  let dummyDomEle = document.createElement("div");
+
+  let tip = tippy(dummyDomEle, {
+    // tippy props:
+    getReferenceClientRect: ref.getBoundingClientRect, // https://atomiks.github.io/tippyjs/v6/all-props/#getreferenceclientrect
+    trigger: "manual", // mandatory, we cause the tippy to show programmatically.
+
+    // your own custom props
+    // content prop can be used when the target is a single element https://atomiks.github.io/tippyjs/v6/constructor/#prop
+    content: () => {
+      let content = document.createElement("div");
+
+      content.innerHTML = "Character: ".concat(node.map((x: any) => x['_private']['data']['Label'])).concat("<br/>Total Interactions: ").concat(node.map((x: any) => x['_private']['data']['TotalInteractions']));
+
+      return content;
+    }
+  });
+
+  tip.show();
 }
 
 /**
@@ -149,6 +181,13 @@ function onRender(event: Event): void {
       maxZoom: data.args["maxZoom"],
     }).on('select unselect', function () {
       updateComponent(cy);
+    }).on('mouseover', 'node', function(e:any) {
+      var hoverNode = e.target;
+      makeHoverNodeTippy(hoverNode)
+    }).on('mouseout', function(e:any) {
+      // Workaround - hide all tippy (as haven't yet worked
+      // out how to destroy individual)
+      hideAll({duration: 0});
     });
 
     if (data.args["showBirdseye"] ){
@@ -156,7 +195,27 @@ function onRender(event: Event): void {
     }
 
     // add the panzoom control
-   cy.panzoom( defaultsPanZoom );
+    cy.panzoom( defaultsPanZoom );
+
+    // cy.ready(function() {
+    //   cy.elements().forEach(function(ele:any) {
+    //     //console.log(ele);
+    //     makePopperWithTippy(ele);
+    //   });
+    // });
+
+    // cy.nodes().unbind("mouseover");
+    // cy.nodes().bind("mouseover", (event:any) => {
+    //   console.log("id = ", event.target.id());
+    //   // event.target.id().show();
+    // });
+
+    // cy.nodes().unbind("mouseout");
+    // cy.nodes().bind("mouseout", (event:any) => {
+    //   console.log("id = ", event.target.id());
+    // //  event.target.id().hide();
+    // });
+
     updateComponent(cy);
   }
 
