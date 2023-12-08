@@ -126,6 +126,33 @@ function makeHoverNodeTippy(node:any) {
   tip.show();
 }
 
+function makeHoverEdgeTippy(edge:any) {
+  // let node = cy.nodes();
+  let ref = edge.popperRef(); // used only for positioning
+
+  // A dummy element must be passed as tippy only accepts dom element(s) as the target
+  // https://atomiks.github.io/tippyjs/v6/constructor/#target-types
+  let dummyDomEle = document.createElement("div");
+
+  let tip = tippy(dummyDomEle, {
+    // tippy props:
+    getReferenceClientRect: ref.getBoundingClientRect, // https://atomiks.github.io/tippyjs/v6/all-props/#getreferenceclientrect
+    trigger: "manual", // mandatory, we cause the tippy to show programmatically.
+
+    // your own custom props
+    // content prop can be used when the target is a single element https://atomiks.github.io/tippyjs/v6/constructor/#prop
+    content: () => {
+      let content = document.createElement("div");
+
+      content.innerHTML = "Interactions between ".concat(edge.map((x: any) => x['_private']['data']['source'])).concat(" and ").concat(edge.map((x: any) => x['_private']['data']['target'])).concat(": ").concat(edge.map((x: any) => x['_private']['data']['Weight']));
+
+      return content;
+    }
+  });
+
+  tip.show();
+}
+
 /**
  * The component's render function. This will be called immediately after
  * the component is initially loaded, and then again every time the
@@ -184,6 +211,9 @@ function onRender(event: Event): void {
     }).on('mouseover', 'node', function(e:any) {
       var hoverNode = e.target;
       makeHoverNodeTippy(hoverNode)
+    }).on('mouseover', 'edge', function(e:any) {
+      var hoverEdge = e.target;
+      makeHoverEdgeTippy(hoverEdge)
     }).on('mouseout', function(e:any) {
       // Workaround - hide all tippy (as haven't yet worked
       // out how to destroy individual)
