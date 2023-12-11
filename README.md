@@ -1,10 +1,19 @@
-# st-cytoscape
+# st-cytoscape-extra
 
-`st-cytoscape` is a [Streamlit](https://streamlit.io) component to embed a [Cytoscape.js](https://js.cytoscape.org/) graph and get the selected nodes and edges in return.
+`st-cytoscape-extra` is a [Streamlit](https://streamlit.io) component to embed a [Cytoscape.js](https://js.cytoscape.org/) graph and get the selected nodes and edges in return.
 
-![Screenshot](screenshot.gif)
+THIS WILL NOT YET WORK WITHOUT ADDITIONAL SETUP AS IT HAS NOT BEEN FINALISED AND UPLOADED TO PYPI. 
+It can be installed, but the repo will also need to be cloned and a development server run. 
+Initial release is likely to be in late December 2023. Alongside this, a sample app using all features will be released.
 
-A more advanced example can be seen live [here](https://share.streamlit.io/vivien0000/causal-simulator/main/app.py) ([code](https://github.com/vivien000/causal-simulator)).
+## Additions from st-cytoscape
+
+This is based on the st-cytoscape package. However, several additional cytoscape.js extensions have been incorporated into this version.
+
+- Tooltips for nodes or edges on mouseover using popper.js and tippy.js
+- Toolbar for zooming
+- Navigator window (optional) for birds-eye overview of network
+- Additional layouts (avsdf, elk, cola, dagre, cise)
 
 ## Installation
 
