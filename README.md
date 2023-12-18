@@ -97,6 +97,55 @@ Instructions to follow
 ## Navigator window 
 Instructions to follow
 
+## Standard layout options
+
+`st-cytoscape` supports the following built-in layout options that are bundled in cytoscape.js.
+
+### Circle
+![image](https://github.com/Bergam0t/st-cytoscape-extra/assets/29951987/6e53622d-54b1-4b68-b3d0-5ebc955d465a)
+
+```Python
+layout = {"name": "circle"}
+```
+
+### Random
+![image](https://github.com/Bergam0t/st-cytoscape-extra/assets/29951987/45660f57-c880-447f-a22e-18080c891016)
+
+```Python
+layout = {"name": "random"}
+```
+
+### Grid
+
+![image](https://github.com/Bergam0t/st-cytoscape-extra/assets/29951987/e8fe9aa5-c70c-42fe-935d-9523592414da)
+
+```Python
+layout = {"name": "grid"}
+```
+
+### Concentric
+
+![image](https://github.com/Bergam0t/st-cytoscape-extra/assets/29951987/c23ca258-c537-4eb1-b702-995311e77528)
+
+```Python
+layout = {"name": "concentric"}
+```
+
+### Breadthfirst
+![image](https://github.com/Bergam0t/st-cytoscape-extra/assets/29951987/03608008-6f93-46e4-ba5d-f628ef9156f5)
+
+```Python
+layout = {"name": "breadthfirst"}
+```
+
+### cose
+
+![image](https://github.com/Bergam0t/st-cytoscape-extra/assets/29951987/3a2f83fc-0dbb-40c5-aac1-efe8cd466a15)
+
+```Python
+layout = {"name": "cose"}
+```
+
 ## Advanced layout options
 
 ### fCoSE
@@ -112,6 +161,8 @@ layout["relativePlacementConstraint"] = [{"top": "Z", "bottom": "X"}]
 layout["relativePlacementConstraint"] = [{"left": "X", "right": "Y"}]
 ```
 
+![image](https://github.com/Bergam0t/st-cytoscape-extra/assets/29951987/c2237cc7-aa85-4015-b828-c0ab51979091)
+
 ### klay
 You can now similarly use the `klay` layout, using the `cytoscape-klay` add-on for Cytoscape.js - [extension](https://github.com/cytoscape/cytoscape.js-klay).  
 
@@ -120,6 +171,8 @@ To use it simply name it in the layout:
 ```Python
 layout = {"name": "klay"}
 ```
+![image](https://github.com/Bergam0t/st-cytoscape-extra/assets/29951987/353840d6-48e3-4711-8854-c9a951dcff65)
+
 
 ### cise
 
@@ -139,6 +192,8 @@ layout = {
     ]
 }
 ```
+![image](https://github.com/Bergam0t/st-cytoscape-extra/assets/29951987/b0815935-d1da-417c-b88c-7e12df4ab7db)
+
 
 ### avsdf
 
@@ -149,6 +204,8 @@ To use it simply name it in the layout:
 ```Python
 layout = {"name": "avsdf"}
 ```
+![image](https://github.com/Bergam0t/st-cytoscape-extra/assets/29951987/19fd1778-c606-4d8a-b0cb-df5e496088f1)
+
 
 ### elk
 
@@ -159,6 +216,8 @@ To use it simply name it in the layout:
 ```Python
 layout = {"name": "elk"}
 ```
+![image](https://github.com/Bergam0t/st-cytoscape-extra/assets/29951987/790bbdfd-bc6a-4b07-aff9-1848e1cef6b6)
+
 
 ### cola
 
@@ -170,6 +229,9 @@ To use it simply name it in the layout:
 layout = {"name": "cola"}
 ```
 
+![image](https://github.com/Bergam0t/st-cytoscape-extra/assets/29951987/f493cefc-396e-4323-b303-cde23a4bf4f8)
+
+
 ### dagre
 
 You can now also use the `dagre` layout, using the `cytoscape-dagre` add-on for Cytoscape.js - [extension](https://github.com/cytoscape/cytoscape.js-dagre).  To use it simply name it in the layout:
@@ -177,4 +239,5 @@ You can now also use the `dagre` layout, using the `cytoscape-dagre` add-on for 
 ```Python
 layout = {"name": "dagre"}
 ```
+![image](https://github.com/Bergam0t/st-cytoscape-extra/assets/29951987/0d67c9e2-3f22-4b5b-a446-6dddc143198d)
 
