@@ -89,7 +89,21 @@ Embeds a Cytoscape.js graph and returns a dictionary containing the list of the 
 - `key` (str or None): an optional key that uniquely identifies this component. If this is None, and the component's arguments are changed, the component will be re-mounted in the Streamlit frontend and lose its current state
 
 ## Tooltips
-Instructions to follow
+WORK IN PROGRESS
+
+Tooltips are enabled using the tippy.js package in conjunction with popper.js
+
+Separate tooltips are supported for edges and nodes. 
+
+### Edge tooltip 
+
+![image](https://github.com/Bergam0t/st-cytoscape-extra/assets/29951987/5c8e198e-6051-498f-8a59-37c929f98f65)
+
+
+### Node tooltip
+
+![image](https://github.com/Bergam0t/st-cytoscape-extra/assets/29951987/49e33ce2-5667-4bc1-baf9-37bf37d2a8de)
+
 
 ## Zoom Bar
 Instructions to follow
