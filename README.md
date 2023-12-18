@@ -4,7 +4,8 @@
 
 THIS WILL NOT YET WORK WITHOUT ADDITIONAL SETUP AS IT HAS NOT BEEN FINALISED AND UPLOADED TO PYPI. 
 It can be installed, but the repo will also need to be cloned and a development server run. 
-Initial release is likely to be in late December 2023. Alongside this, a sample app using all features will be released.
+Initial release is likely to be in late December 2023, or merged with the original st-cytoscape package as a pull request. 
+Alongside this, a sample app using all features will be released.
 
 ## Additions from st-cytoscape
 
@@ -87,7 +88,18 @@ Embeds a Cytoscape.js graph and returns a dictionary containing the list of the 
 - `max_zoom` (float): cf. https://js.cytoscape.org/#core/initialisation
 - `key` (str or None): an optional key that uniquely identifies this component. If this is None, and the component's arguments are changed, the component will be re-mounted in the Streamlit frontend and lose its current state
 
-## Advanced layout
+## Tooltips
+Instructions to follow
+
+## Zoom Bar
+Instructions to follow
+
+## Navigator window 
+Instructions to follow
+
+## Advanced layout options
+
+### fCoSE
 
 `st-cytoscape` includes `fCoSE`, a Cytoscape.js [extension](https://github.com/iVis-at-Bilkent/cytoscape.js-fcose) offering an elegant force-directed layout. You can then use `{"name": "fcose", ...}` as an argument for `layout`, instead of Cytoscape.js' [native layout options](https://js.cytoscape.org/#layouts).
 
@@ -100,14 +112,69 @@ layout["relativePlacementConstraint"] = [{"top": "Z", "bottom": "X"}]
 layout["relativePlacementConstraint"] = [{"left": "X", "right": "Y"}]
 ```
 
-You can now similarly use the `klay` layout, using the `cytoscape-klay` add-on for Cytoscape.js - [extension](https://github.com/cytoscape/cytoscape.js-klay).  To use it simply name it in the layout:
+### klay
+You can now similarly use the `klay` layout, using the `cytoscape-klay` add-on for Cytoscape.js - [extension](https://github.com/cytoscape/cytoscape.js-klay).  
+
+To use it simply name it in the layout:
 
 ```Python
 layout = {"name": "klay"}
 ```
 
-You can now also use the `avsdf` layout, using the `cytoscape-avsdf` add-on for Cytoscape.js - [extension](https://github.com/iVis-at-Bilkent/cytoscape.js-avsdf).  To use it simply name it in the layout:
+### cise
+
+You can now also use the `cise` layout, using the `cytoscape-cise` add-on for Cytoscape.js - [extension](https://github.com/iVis-at-Bilkent/cytoscape.js-cise).  
+
+The `cise` layout requires some extra parameters to be passed - it is not enough to just pass the name of the layout as a parameter.
+Specifically, the other mandatory parameter is clusters, which must be passed as a list of lists, where each sublist contains the nodes that should belong to each cluster.
+
+```Python
+layout = {
+"name": "cise",
+"clusters": [
+    ["node1", "node4"],
+    ["node2", "node6", "node7"],
+    ["node3", "node5"],
+    ["node8"]
+    ]
+}
+```
+
+### avsdf
+
+You can now also use the `avsdf` layout, using the `cytoscape-avsdf` add-on for Cytoscape.js - [extension](https://github.com/iVis-at-Bilkent/cytoscape.js-avsdf).  
+
+To use it simply name it in the layout:
 
 ```Python
 layout = {"name": "avsdf"}
 ```
+
+### elk
+
+You can now also use the `elk` layout, using the `cytoscape-elk` add-on for Cytoscape.js - [extension](https://github.com/cytoscape/cytoscape.js-elk).  
+
+To use it simply name it in the layout:
+
+```Python
+layout = {"name": "elk"}
+```
+
+### cola
+
+The `cola` layout is also included using the `cytoscape-cola` add-on for Cytoscape.js - [extension](https://github.com/cytoscape/cytoscape.js-cola).  
+
+To use it simply name it in the layout:
+
+```Python
+layout = {"name": "cola"}
+```
+
+### dagre
+
+You can now also use the `dagre` layout, using the `cytoscape-dagre` add-on for Cytoscape.js - [extension](https://github.com/cytoscape/cytoscape.js-dagre).  To use it simply name it in the layout:
+
+```Python
+layout = {"name": "dagre"}
+```
+
